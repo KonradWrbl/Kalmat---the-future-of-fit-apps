@@ -23,7 +23,7 @@ const GenderText = styled.p`
 `
 
 const MyButton = styled(Button)`
-    border-radius: '50%';
+    border-radius: 50%;
 `
 
 const GenderSelectionImg = props => {

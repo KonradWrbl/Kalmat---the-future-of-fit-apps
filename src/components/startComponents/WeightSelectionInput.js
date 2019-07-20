@@ -5,6 +5,7 @@ import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
+import { connect } from 'react-redux'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -24,14 +25,24 @@ const useStyles = makeStyles(theme => ({
   }));
 
 
-const WeightSelectionInput = () => {
+
+
+const WeightSelectionInput = (props) => {
     const classes = useStyles();
     const [values, setValues] = React.useState({
         weight: '',
     });
 
+    const sendData = () => {
+      props.dispatch({
+        type: 'WEIGHT',
+        payload: values.weight,
+      })
+    }
+
     const changeweight = e => {
       setValues({weight: e.target.value})
+      sendData();
     }
 
     return (
@@ -52,4 +63,10 @@ const WeightSelectionInput = () => {
     )
 }
 
-export default WeightSelectionInput
+const mapStateToProps = (values) => {
+  return {
+    weight: values.weight,
+  }
+}
+
+export default connect(mapStateToProps)(WeightSelectionInput)

@@ -5,6 +5,8 @@ import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
+import { connect } from 'react-redux'
+
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -24,14 +26,22 @@ const useStyles = makeStyles(theme => ({
   }));
 
 
-const HightSelectionInput = () => {
+const HightSelectionInput = (props) => {
     const classes = useStyles();
     const [values, setValues] = React.useState({
         hight: '',
     });
 
+    const sendData = () => {
+      props.dispatch({
+        type: 'HIGHT',
+        payload: values.hight
+      })
+    }
+
     const changeHight = e => {
       setValues({hight: e.target.value})
+      sendData();
     }
 
     return (
@@ -52,4 +62,10 @@ const HightSelectionInput = () => {
     )
 }
 
-export default HightSelectionInput
+const mapStateToProps = (values) => {
+  return {
+    hight: values.hight,
+  }
+}
+
+export default connect(mapStateToProps)(HightSelectionInput)

@@ -10,7 +10,7 @@ const StartComponentWrapper = styled.div`
     align-items: flex-end;
 `
 
-const StartComponent = () => {
+const StartComponent = (props) => {
     return (
         <StartComponentWrapper>
             <Stepper />
