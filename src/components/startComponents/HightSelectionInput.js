@@ -20,37 +20,36 @@ const useStyles = makeStyles(theme => ({
     },
     textField: {
       flexBasis: 120,
-
     },
   }));
 
 
-const AgeSelectionInput = () => {
+const HightSelectionInput = () => {
     const classes = useStyles();
     const [values, setValues] = React.useState({
-        age: '',
+        hight: '',
     });
 
-    const changeAge = e => {
-      setValues({age: e.target.value})
+    const changeHight = e => {
+      setValues({hight: e.target.value})
     }
 
     return (
         <FormControl className={clsx(classes.margin, classes.withoutLabel, classes.textField)}>
             <Input
-            id="adornment-age"
-            value={values.age}
+            id="adornment-hight"
+            value={values.hight}
             type='number'
-            onChange={changeAge}
-            endAdornment={<InputAdornment position="end">lat</InputAdornment>}
-            aria-describedby="age-helper-text"
+            onChange={changeHight}
+            endAdornment={<InputAdornment position="end">cm</InputAdornment>}
+            aria-describedby="hight-helper-text"
             inputProps={{
-                'aria-label': 'age',
+                'aria-label': 'hight',
             }}
             />
-            <FormHelperText id="age-helper-text">Wiek</FormHelperText>
+            <FormHelperText id="hight-helper-text">Wzrost</FormHelperText>
         </FormControl>
     )
 }
 
-export default AgeSelectionInput
+export default HightSelectionInput

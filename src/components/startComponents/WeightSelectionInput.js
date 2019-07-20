@@ -20,37 +20,36 @@ const useStyles = makeStyles(theme => ({
     },
     textField: {
       flexBasis: 120,
-
     },
   }));
 
 
-const AgeSelectionInput = () => {
+const WeightSelectionInput = () => {
     const classes = useStyles();
     const [values, setValues] = React.useState({
-        age: '',
+        weight: '',
     });
 
-    const changeAge = e => {
-      setValues({age: e.target.value})
+    const changeweight = e => {
+      setValues({weight: e.target.value})
     }
 
     return (
         <FormControl className={clsx(classes.margin, classes.withoutLabel, classes.textField)}>
             <Input
-            id="adornment-age"
-            value={values.age}
+            id="adornment-weight"
+            value={values.weight}
             type='number'
-            onChange={changeAge}
-            endAdornment={<InputAdornment position="end">lat</InputAdornment>}
-            aria-describedby="age-helper-text"
+            onChange={changeweight}
+            endAdornment={<InputAdornment position="end">Kg</InputAdornment>}
+            aria-describedby="weight-helper-text"
             inputProps={{
-                'aria-label': 'age',
+                'aria-label': 'weight',
             }}
             />
-            <FormHelperText id="age-helper-text">Wiek</FormHelperText>
+            <FormHelperText id="weight-helper-text">Waga</FormHelperText>
         </FormControl>
     )
 }
 
-export default AgeSelectionInput
+export default WeightSelectionInput

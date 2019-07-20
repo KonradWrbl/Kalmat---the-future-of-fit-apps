@@ -6,7 +6,9 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import GenderSelection from './GenderSelection';
 import styled from 'styled-components'
-import AgeSelection from './AgeSelectionInput';
+import AgeSelection from './AgeSelection';
+import WeightSelection from './WeightSelection';
+import HightSelection from './HightSelection';
 
 const startSteps = [
   {
@@ -16,7 +18,10 @@ const startSteps = [
     startComponent: <AgeSelection />
   },
   {
-    startComponent: <GenderSelection />
+    startComponent: <WeightSelection />
+  },
+  {
+    startComponent: <HightSelection />
   },
 ];
 

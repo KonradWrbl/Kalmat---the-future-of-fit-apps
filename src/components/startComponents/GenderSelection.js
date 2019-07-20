@@ -19,7 +19,7 @@ const GenderSelectionWrapper = styled.div`
     justify-content: center;
 `;
 
-const GenderText = styled.p`
+const StartMainText = styled.p`
     font-size: 2em;
     opacity: .3;
     font-weight: bold;
@@ -31,7 +31,7 @@ const GenderSelection = () => {
 
     return(
         <GenderSelectionWrapper>
-            <GenderText>Jestem ...</GenderText>
+            <StartMainText>Jestem ...</StartMainText>
             <GenderSelector>
                 <GenderSelectionImg gender='boy'/>
                 <GenderSelectionImg gender='girl'/>
