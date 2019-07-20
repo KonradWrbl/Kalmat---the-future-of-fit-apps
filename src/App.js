@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
-    font-family: 'Montserrat';
+    font-family: 'Roboto';
     display: flex;
     justify-content: center;
   }
