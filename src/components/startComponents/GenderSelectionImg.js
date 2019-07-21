@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import boy from '../../images/gender/boy.svg'
 import girl from '../../images/gender/girl.svg'
 import styled from 'styled-components'
@@ -27,13 +27,13 @@ const MyButton = styled(Button)`
 `
 
 const GenderSelectionImg = props => {
-    const gender = props.gender;
+    const [gender, setGender] = useState('none')
     return (
         <GenderImgWrapper>
             <MyButton>
-                <GenderImg src={gender === 'boy' ? boy : girl} />
+                <GenderImg src={props.gender === 'boy' ? boy : girl} />
             </MyButton>
-            <GenderText>{gender === 'boy' ? 'mężczyzną' : 'kobietą'}</GenderText>
+            <GenderText>{props.gender === 'boy' ? 'mężczyzną' : 'kobietą'}</GenderText>
         </GenderImgWrapper>
     )
 }
