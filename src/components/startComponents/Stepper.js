@@ -8,7 +8,7 @@ import GenderSelection from './GenderSelection';
 import styled from 'styled-components'
 import AgeSelection from './AgeSelection';
 import WeightSelection from './WeightSelection';
-import HightSelection from './HightSelection';
+import GrowthSelection from './GrowthSelection';
 
 const startSteps = [
   {
@@ -21,7 +21,7 @@ const startSteps = [
     startComponent: <WeightSelection />
   },
   {
-    startComponent: <HightSelection />
+    startComponent: <GrowthSelection />
   },
 ];
 

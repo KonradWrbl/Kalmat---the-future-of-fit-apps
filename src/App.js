@@ -8,23 +8,29 @@ const initialState = {
   //gender: 'none',
   age: '',
   weight: '',
-  hight: '',
+  growth: '',
 }
 
 const reducer = (state = initialState, action) => {
   switch(action.type)  {
     case 'WEIGHT':
-      return {weight: action.payload}
+      return {
+        ...state,
+        weight: action.payload}
     case 'AGE':
-      return {age: action.payload}
-    case 'HIGHT':
-      return {hight: action.payload}
+      return {
+        ...state,
+        age: action.payload}
+    case 'GROWTH':
+      return {
+        ...state,
+        growth: action.payload}
     default:
       return state;
   }
 }
 
-const store = createStore(reducer);
+const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 const GlobalStyle = createGlobalStyle`
   body {

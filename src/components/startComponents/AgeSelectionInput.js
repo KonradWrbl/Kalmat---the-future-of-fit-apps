@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
 const AgeSelectionInput = (props) => {
     const classes = useStyles();
     const [values, setValues] = React.useState({
-        age: '',
+        age: props.age,
     });
 
     const sendData = () => {
@@ -41,8 +41,11 @@ const AgeSelectionInput = (props) => {
 
     const changeAge = e => {
       setValues({age: e.target.value})
-      sendData()
     }
+
+    useEffect(() => {
+      sendData();
+    }, [values]);
 
     return (
         <FormControl className={clsx(classes.margin, classes.withoutLabel, classes.textField)}>

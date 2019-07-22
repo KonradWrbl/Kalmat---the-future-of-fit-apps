@@ -1,9 +1,9 @@
 import React from 'react';
-import HightSelectionInput from './HightSelectionInput';
+import GrowthSelectionInput from './GrowthSelectionInput';
 import styled from 'styled-components';
 import hight from  '../../images/hight.svg'
 
-const HightSelectionWrapper = styled.div`
+const GrowthSelectionWrapper = styled.div`
     width: 100%;
     height: 100%;
     display: flex;
@@ -12,7 +12,7 @@ const HightSelectionWrapper = styled.div`
     align-items: center;
 `
 
-const NewHightSelectionInput = styled(HightSelectionInput)`
+const NewGrowthSelectionInput = styled(GrowthSelectionInput)`
     width: 90%;
     height: 20px;
 `
@@ -28,14 +28,14 @@ const StartMainText = styled.p`
     padding: 0 20% 0 0;
 `
 
-const HightSelection = () => {
+const GrowthSelection = () => {
     return(
-        <HightSelectionWrapper>
+        <GrowthSelectionWrapper>
             <StartMainText>Mierzę ...</StartMainText>
-            <NewHightSelectionInput />
+            <NewGrowthSelectionInput />
             <Callendar src={hight} />
-        </HightSelectionWrapper>
+        </GrowthSelectionWrapper>
     )
 }
 
-export default HightSelection
+export default GrowthSelection

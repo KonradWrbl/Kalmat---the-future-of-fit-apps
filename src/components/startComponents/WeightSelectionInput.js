@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
 const WeightSelectionInput = (props) => {
     const classes = useStyles();
     const [values, setValues] = React.useState({
-        weight: '',
+        weight: props.weight,
     });
 
     const sendData = () => {
@@ -42,8 +42,11 @@ const WeightSelectionInput = (props) => {
 
     const changeweight = e => {
       setValues({weight: e.target.value})
-      sendData();
     }
+
+    useEffect(() => {
+      sendData();
+    }, [values]);
 
     return (
         <FormControl className={clsx(classes.margin, classes.withoutLabel, classes.textField)}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
@@ -26,46 +26,49 @@ const useStyles = makeStyles(theme => ({
   }));
 
 
-const HightSelectionInput = (props) => {
+const GrowthSelectionInput = (props) => {
     const classes = useStyles();
     const [values, setValues] = React.useState({
-        hight: '',
+        growth: props.growth,
     });
 
     const sendData = () => {
       props.dispatch({
-        type: 'HIGHT',
-        payload: values.hight
+        type: 'GROWTH',
+        payload: values.growth
       })
     }
 
-    const changeHight = e => {
-      setValues({hight: e.target.value})
-      sendData();
+    const changegrowth = e => {
+      setValues({growth: e.target.value})
     }
+
+    useEffect(() => {
+      sendData();
+    }, [values]);
 
     return (
         <FormControl className={clsx(classes.margin, classes.withoutLabel, classes.textField)}>
             <Input
-            id="adornment-hight"
-            value={values.hight}
+            id="adornment-growth"
+            value={values.growth}
             type='number'
-            onChange={changeHight}
+            onChange={changegrowth}
             endAdornment={<InputAdornment position="end">cm</InputAdornment>}
-            aria-describedby="hight-helper-text"
+            aria-describedby="growth-helper-text"
             inputProps={{
-                'aria-label': 'hight',
+                'aria-label': 'growth',
             }}
             />
-            <FormHelperText id="hight-helper-text">Wzrost</FormHelperText>
+            <FormHelperText id="growth-helper-text">Wzrost</FormHelperText>
         </FormControl>
     )
 }
 
 const mapStateToProps = (values) => {
   return {
-    hight: values.hight,
+    growth: values.growth,
   }
 }
 
-export default connect(mapStateToProps)(HightSelectionInput)
+export default connect(mapStateToProps)(GrowthSelectionInput)
