@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React from "react";
 import boy from '../../images/gender/boy.svg'
 import girl from '../../images/gender/girl.svg'
 import styled from 'styled-components'
 import { Button } from '@material-ui/core';
+
+
 
 const GenderImg = styled.img`
     width: 100%;
@@ -27,15 +29,19 @@ const MyButton = styled(Button)`
 `
 
 const GenderSelectionImg = props => {
-    const [gender, setGender] = useState('none')
+
+
+
+
     return (
         <GenderImgWrapper>
             <MyButton>
-                <GenderImg src={props.gender === 'boy' ? boy : girl} />
+                <GenderImg src={props.girl ? boy : girl} />
             </MyButton>
-            <GenderText>{props.gender === 'boy' ? 'mężczyzną' : 'kobietą'}</GenderText>
+            <GenderText>{props.girl ? 'mężczyzną' : 'kobietą'}</GenderText>
         </GenderImgWrapper>
     )
 }
+
 
 export default GenderSelectionImg

@@ -5,7 +5,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux'
 
 const initialState = {
-  //gender: 'none',
+  gender: 'none',
   age: '',
   weight: '',
   growth: '',

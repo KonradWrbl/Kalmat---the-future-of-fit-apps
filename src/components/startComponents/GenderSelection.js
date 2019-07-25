@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GenderSelectionImg from './GenderSelectionImg'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
@@ -26,19 +26,43 @@ const StartMainText = styled.p`
     padding: 0 20%;
 `
 
-const GenderSelection = () => {
+const GenderSelection = (props) => {
     const [gender, setGender] = useState('none')
+
+    const sendData = () => {
+        props.dispatch({
+            type: 'GENDER',
+            payload: gender,
+        })
+    }
+
+    const genderSelectionFoo = () => {
+        console.log('dziala');
+        //setGender({gender: 'male'})
+    }
+
+    useEffect(() => {
+        sendData();
+      }, [gender]);
+
+
 
     return(
         <GenderSelectionWrapper>
             <StartMainText>Jestem ...</StartMainText>
             <GenderSelector>
-                <GenderSelectionImg gender='boy'/>
-                <GenderSelectionImg gender='girl'/>
+                <GenderSelectionImg boy onClick={genderSelectionFoo}/>
+                <GenderSelectionImg girl onClick={genderSelectionFoo}/>
             </GenderSelector>
         </GenderSelectionWrapper>
 
     )
 }
 
-export default GenderSelection
+const mapStateToProps = gender => {
+    return {
+        gender: gender,
+    }
+}
+
+export default connect(mapStateToProps)(GenderSelection)
