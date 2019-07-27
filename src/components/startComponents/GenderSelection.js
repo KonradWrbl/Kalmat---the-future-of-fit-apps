@@ -27,7 +27,7 @@ const StartMainText = styled.p`
 `
 
 const GenderSelection = (props) => {
-    const [gender, setGender] = useState('none')
+    const [gender, setGender] = useState(`${props.gender}`)
 
     const sendData = () => {
         props.dispatch({
@@ -38,12 +38,12 @@ const GenderSelection = (props) => {
 
     const genderSelectionMale = () => {
         console.log('male');
-        setGender({gender: 'male'})
+        setGender('male')
     }
 
     const genderSelectionFemale = () => {
         console.log('female');
-        setGender({gender: 'female'})
+        setGender('female')
     }
 
     useEffect(() => {

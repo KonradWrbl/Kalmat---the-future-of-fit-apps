@@ -3,6 +3,7 @@ import AgeSelectionInput from './AgeSelectionInput';
 import styled from 'styled-components';
 import callendar from  '../../images/callendar.svg'
 
+
 const AgeSelectionWrapper = styled.div`
     width: 100%;
     height: 100%;
@@ -28,15 +29,18 @@ const StartMainText = styled.p`
     padding: 0 20% 0 0;
 `
 
-const AgeSelection = () => {
+const AgeSelection = (props) => {
     return(
         <AgeSelectionWrapper>
 
             <StartMainText>Mam ...</StartMainText>
             <NewAgeSelectionInput />
             <Callendar src={callendar} />
+            {props.age}
         </AgeSelectionWrapper>
     )
 }
+
+
 
 export default AgeSelection

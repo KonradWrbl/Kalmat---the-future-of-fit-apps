@@ -9,8 +9,7 @@ import styled from 'styled-components'
 import AgeSelection from './AgeSelection';
 import WeightSelection from './WeightSelection';
 import GrowthSelection from './GrowthSelection';
-import { progressPercentage } from 'style-value-types';
-import {Link} from 'react-router-dom';
+import { withRouter } from "react-router";
 
 const startSteps = [
   {
@@ -50,7 +49,7 @@ const StepperWrapper = styled.div`
     height: 100%;
 `
 
-export default function TextMobileStepper(props) {
+function Stepper(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
@@ -73,8 +72,7 @@ export default function TextMobileStepper(props) {
         variant="dots"
         activeStep={activeStep}
         nextButton={
-          <Button size="small" onClick={handleNext}>
-            <Link to='/core' />
+          <Button size="small" onClick={activeStep === maxSteps-1 ? props.finish : handleNext}>
             {activeStep === maxSteps-1 ? 'Koniec' : 'Dalej'}
             {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
           </Button>
@@ -89,3 +87,6 @@ export default function TextMobileStepper(props) {
     </StepperWrapper>
   );
 }
+
+
+export default withRouter(Stepper)

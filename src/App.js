@@ -1,43 +1,11 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components'
 import StartComponent from './components/startComponents/StartComponent'
-import { createStore } from 'redux';
-import { Provider } from 'react-redux'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import BottomMenu from './components/mainApp/BottomMenu';
+import { connect } from 'react-redux'
 
-const initialState = {
-  gender: 'none',
-  age: '',
-  weight: '',
-  growth: '',
-}
 
-const reducer = (state = initialState, action) => {
-  switch(action.type)  {
-    case 'WEIGHT':
-      return {
-        ...state,
-        weight: action.payload}
-    case 'AGE':
-      return {
-        ...state,
-        age: action.payload}
-    case 'GROWTH':
-      return {
-        ...state,
-        growth: action.payload}
-    case 'GENDER':
-      return {
-        ...state,
-        gender: action.payload}
-    default:
-      return state;
-  }
-}
-
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -60,20 +28,24 @@ const MainWrapper = styled.div`
 
 
 
-function App() {
+function App(props) {
   return (
-    <Provider store = {store}>
       <Router>
         <GlobalStyle />
         <MainWrapper>
 
-            <Route exact path = '/' component={StartComponent}/>
+            <Route exact path = '/' render={() => (props.introductionFinished === true ? (<Redirect to='/core'/>) : <StartComponent />)}/>
             <Route path='/core' component={BottomMenu}/>
 
         </MainWrapper>
       </Router>
-    </ Provider>
   );
 }
 
-export default App;
+const mapStateToProps = (props) => {
+  return{
+      introductionFinished: props.introductionFinished
+  }
+}
+
+export default connect(mapStateToProps)(App)
