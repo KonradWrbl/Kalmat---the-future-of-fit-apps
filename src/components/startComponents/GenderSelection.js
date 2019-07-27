@@ -36,9 +36,14 @@ const GenderSelection = (props) => {
         })
     }
 
-    const genderSelectionFoo = () => {
-        console.log('dziala');
-        //setGender({gender: 'male'})
+    const genderSelectionMale = () => {
+        console.log('male');
+        setGender({gender: 'male'})
+    }
+
+    const genderSelectionFemale = () => {
+        console.log('female');
+        setGender({gender: 'female'})
     }
 
     useEffect(() => {
@@ -49,10 +54,16 @@ const GenderSelection = (props) => {
 
     return(
         <GenderSelectionWrapper>
-            <StartMainText>Jestem ...</StartMainText>
-            <GenderSelector>
-                <GenderSelectionImg boy onClick={genderSelectionFoo}/>
-                <GenderSelectionImg girl onClick={genderSelectionFoo}/>
+            <StartMainText >Jestem ...</StartMainText>
+            <GenderSelector >
+                <GenderSelectionImg
+                    gender='girl'
+                    selectionMale={genderSelectionMale}
+                    selectionFemale={genderSelectionFemale}/>
+                <GenderSelectionImg
+                    gender='boy'
+                    selectionMale={genderSelectionMale}
+                    selectionFemale={genderSelectionFemale}/>
             </GenderSelector>
         </GenderSelectionWrapper>
 

@@ -31,14 +31,38 @@ const MyButton = styled(Button)`
 const GenderSelectionImg = props => {
 
 
+    const genderFoo = (gender=props.gender) => {
+        switch(gender) {
+            case 'girl':
+                return girl
+            case 'boy':
+                return boy
+            default:
+                return girl
+        }
+    }
 
+    const genderSelect = (gender=props.gender) => {
+        switch(gender) {
+            case 'girl':
+                return props.selectionFemale
+            case 'boy':
+                return props.selectionMale
+            default:
+                return props.selectionMale
+        }
+    }
+
+    const gender = genderFoo()
+
+    const selectionFoo = genderSelect()
 
     return (
         <GenderImgWrapper>
-            <MyButton>
-                <GenderImg src={props.girl ? boy : girl} />
+            <MyButton onClick={selectionFoo}>
+                <GenderImg src={gender} />
             </MyButton>
-            <GenderText>{props.girl ? 'mężczyzną' : 'kobietą'}</GenderText>
+            <GenderText>{props.gender==='boy' ? 'mężczyzną' : 'kobietą'}</GenderText>
         </GenderImgWrapper>
     )
 }
