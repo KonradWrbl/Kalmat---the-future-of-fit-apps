@@ -2,8 +2,19 @@ import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components'
 import StartComponent from './components/startComponents/StartComponent'
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-import BottomMenu from './components/mainApp/BottomMenu';
 import { connect } from 'react-redux'
+import coreApp from './components/coreApp/coreApp';
+import {createMuiTheme} from '@material-ui/core/styles'
+import { ThemeProvider } from '@material-ui/styles';
+
+
+const theme = createMuiTheme({
+  palette: {
+    primary: { main: '#178C29' }, // Purple and green play nicely together.
+    secondary: { main: '#D85C2F' }, // This is just green.A700 as hex.
+    third: { main: '#02658C'},
+  },
+});
 
 
 
@@ -31,13 +42,15 @@ const MainWrapper = styled.div`
 function App(props) {
   return (
       <Router>
-        <GlobalStyle />
-        <MainWrapper>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <MainWrapper>
 
-            <Route exact path = '/' render={() => (props.introductionFinished === true ? (<Redirect to='/core'/>) : <StartComponent />)}/>
-            <Route path='/core' component={BottomMenu}/>
+              <Route exact path = '/' render={() => (props.introductionFinished === true ? (<Redirect to='/core'/>) : <StartComponent />)}/>
+              <Route path='/core' component={coreApp}/>
 
-        </MainWrapper>
+          </MainWrapper>
+        </ThemeProvider>
       </Router>
   );
 }

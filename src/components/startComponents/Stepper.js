@@ -31,7 +31,7 @@ const startSteps = [
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-    //flexGrow: 1,
+    flexGrow: 1,
     height: '90%',
   },
   img: {

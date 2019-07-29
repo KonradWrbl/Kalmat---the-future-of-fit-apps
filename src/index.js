@@ -10,7 +10,8 @@ const initialState = {
     age: '',
     weight: '',
     growth: '',
-    introductionFinished: false
+    introductionFinished: false,
+    bottomMenuValue: 0
   }
 
   const reducer = (state = initialState, action) => {
@@ -35,6 +36,10 @@ const initialState = {
         return {
           ...state,
           introductionFinished: action.payload}
+      case 'BOTTOMMENU':
+        return {
+          ...state,
+          bottomMenuValue: action.payload}
       default:
         return state;
     }

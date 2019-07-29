@@ -40,10 +40,4 @@ const StartComponent = (props) => {
     )
 }
 
-const mapStateToProps = (introductionFinished) => {
-    return {
-        introductionFinished: introductionFinished.finished,
-    }
-}
-
-export default connect(mapStateToProps)(StartComponent)
+export default connect()(StartComponent)
