@@ -39,7 +39,7 @@ const BottomMenu = props => {
       className={classes.root}
     >
       <BottomNavigationAction label="Główna" icon={<Home />} />
-      <BottomNavigationAction label="Dieta" icon={<Fastfood />} />
+      <BottomNavigationAction label="Dieta" icon={<Fastfood/>} />
       <BottomNavigationAction label="Ćwiczenia" icon={<FitnessCenter />} />
     </BottomNavigation>
   );

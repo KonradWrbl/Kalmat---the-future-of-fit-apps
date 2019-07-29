@@ -25,11 +25,10 @@ const ButtonAppBar = (props) => {
 
   return (
     <div className={classes.root}>
-        <AppBar position="static" color={props.bottomMenuValue ? 'secondary' : 'primary'}>
+        <AppBar position="static" color={props.bottomMenuValue === 0 ? 'primary' : 'secondary'}>
           <Toolbar>
             <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
               <MenuIcon />
-              {props.bottomMenuValue}
             </IconButton>
             <Typography variant="h6" className={classes.title}>
               Kalmat
@@ -40,4 +39,10 @@ const ButtonAppBar = (props) => {
   );
 }
 
-export default connect()(ButtonAppBar)
+const mapStateToProps = state => {
+  return{
+    bottomMenuValue: state.bottomMenuValue
+  }
+}
+
+export default connect(mapStateToProps)(ButtonAppBar)

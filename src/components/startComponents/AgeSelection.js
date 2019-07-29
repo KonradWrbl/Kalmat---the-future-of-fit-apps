@@ -36,7 +36,6 @@ const AgeSelection = (props) => {
             <StartMainText>Mam ...</StartMainText>
             <NewAgeSelectionInput />
             <Callendar src={callendar} />
-            {props.age}
         </AgeSelectionWrapper>
     )
 }
