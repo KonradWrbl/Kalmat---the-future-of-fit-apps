@@ -9,6 +9,25 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import girl from '../../images/gender/girl.svg'
+import styled from 'styled-components'
+import { connect } from 'react-redux'
+import Settings from '@material-ui/icons/Settings';
+import Person from '@material-ui/icons/Person';
+
+const ImgWrapper = styled.div`
+    width: 100%;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
+
+const GenderImg = styled.img`
+    width: 60%;
+    border-radius: 50%;
+`
 
 const useStyles = makeStyles({
   list: {
@@ -43,19 +62,23 @@ export default function SwipeableTemporaryDrawer() {
       onClick={toggleDrawer(side, false)}
       onKeyDown={toggleDrawer(side, false)}
     >
+        <ImgWrapper>
+            <GenderImg src={girl}/>
+        </ImgWrapper>
+
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+        {['Profil'].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemIcon>{<Person />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+        {['Ustawienia'].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemIcon>{<Settings />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
@@ -70,6 +93,7 @@ export default function SwipeableTemporaryDrawer() {
       onClick={toggleDrawer(side, false)}
       onKeyDown={toggleDrawer(side, false)}
     >
+        <GenderImg src='girl'/>
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
