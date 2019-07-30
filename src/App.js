@@ -3,7 +3,7 @@ import styled, { createGlobalStyle } from 'styled-components'
 import StartComponent from './components/startComponents/StartComponent'
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { connect } from 'react-redux'
-import CoreApp from './components/coreApp/CoreApp';
+import CoreApp from './components/coreApp/SoreApp';
 import {createMuiTheme} from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/styles';
 
