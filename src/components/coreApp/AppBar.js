@@ -6,7 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import styled from 'styled-components'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,11 +21,17 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const AppBarWrapper = styled.div`
+  position: fixed;
+  width: 100%;
+  top: 0;
+`
+
 const ButtonAppBar = (props) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <AppBarWrapper className={classes.root}>
         <AppBar position="static" color={props.bottomMenuValue === 0 ? 'primary' : 'secondary'}>
           <Toolbar>
             <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
@@ -35,7 +42,7 @@ const ButtonAppBar = (props) => {
             </Typography>
           </Toolbar>
         </AppBar>
-    </div>
+    </AppBarWrapper>
   );
 }
 

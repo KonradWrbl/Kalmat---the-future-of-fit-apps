@@ -7,12 +7,19 @@ import Fit from '@material-ui/icons/DirectionsRun';
 import Fastfood from '@material-ui/icons/Fastfood';
 import FitnessCenter from '@material-ui/icons/FitnessCenter';
 import { connect } from 'react-redux'
+import styled from 'styled-components'
 
 const useStyles = makeStyles({
   root: {
     width: '100%',
   },
 });
+
+const BottomNavigationWrapper = styled.div`
+  position: fixed;
+  bottom: 0;
+  width: 100%
+`
 
 const BottomMenu = props => {
   const classes = useStyles();
@@ -30,18 +37,20 @@ const BottomMenu = props => {
   },[value])
 
   return (
-    <BottomNavigation
-      value={value}
-      onChange={(event, newValue) => {
-        setValue(newValue);
-      }}
-      showLabels
-      className={classes.root}
-    >
-      <BottomNavigationAction label="Główna" icon={<Home />} />
-      <BottomNavigationAction label="Dieta" icon={<Fastfood/>} />
-      <BottomNavigationAction label="Ćwiczenia" icon={<FitnessCenter />} />
-    </BottomNavigation>
+    <BottomNavigationWrapper>
+      <BottomNavigation
+        value={value}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+        showLabels
+        className={classes.root}
+      >
+        <BottomNavigationAction label="Główna" icon={<Home />} />
+        <BottomNavigationAction label="Dieta" icon={<Fastfood/>} />
+        <BottomNavigationAction label="Ćwiczenia" icon={<FitnessCenter />} />
+      </BottomNavigation>
+    </BottomNavigationWrapper>
   );
 }
 

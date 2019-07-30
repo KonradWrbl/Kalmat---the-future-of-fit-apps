@@ -3,7 +3,7 @@ import styled, { createGlobalStyle } from 'styled-components'
 import StartComponent from './components/startComponents/StartComponent'
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { connect } from 'react-redux'
-import coreApp from './components/coreApp/coreApp';
+import CoreApp from './components/coreApp/CoreApp';
 import {createMuiTheme} from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/styles';
 
@@ -47,7 +47,7 @@ function App(props) {
           <MainWrapper>
 
               <Route exact path = '/' render={() => (props.introductionFinished === true ? (<Redirect to='/core'/>) : <StartComponent />)}/>
-              <Route path='/core' component={coreApp}/>
+              <Route path='/core' component={CoreApp}/>
 
           </MainWrapper>
         </ThemeProvider>
