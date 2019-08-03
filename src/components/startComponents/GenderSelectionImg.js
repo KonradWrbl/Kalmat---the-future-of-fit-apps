@@ -3,6 +3,7 @@ import boy from '../../images/gender/boy.svg'
 import girl from '../../images/gender/girl.svg'
 import styled from 'styled-components'
 import { Button } from '@material-ui/core';
+import { connect } from 'react-redux'
 
 
 
@@ -25,17 +26,17 @@ const GenderText = styled.p`
 `
 
 const MyButton = styled(Button)`
-    border-radius: 50% !important;
+border-radius: 50% !important;
+background-color: ${(props) => (props.gender !== props.selectedGender) ? '#B7BDBD' : '' } !important;
 `
 
 const GenderSelectionImg = props => {
 
-
     const genderFoo = (gender=props.gender) => {
         switch(gender) {
-            case 'girl':
+            case 'female':
                 return girl
-            case 'boy':
+            case 'male':
                 return boy
             default:
                 return girl
@@ -44,14 +45,15 @@ const GenderSelectionImg = props => {
 
     const genderSelect = (gender=props.gender) => {
         switch(gender) {
-            case 'girl':
+            case 'female':
                 return props.selectionFemale
-            case 'boy':
+            case 'male':
                 return props.selectionMale
             default:
                 return props.selectionMale
         }
     }
+
 
     const gender = genderFoo()
 
@@ -59,13 +61,20 @@ const GenderSelectionImg = props => {
 
     return (
         <GenderImgWrapper>
-            <MyButton onClick={selectionFoo}>
+            <MyButton onClick={selectionFoo} >
                 <GenderImg src={gender} />
             </MyButton>
-            <GenderText>{props.gender==='boy' ? 'mężczyzną' : 'kobietą'}</GenderText>
+            <GenderText>{props.gender==='male' ? 'mężczyzną' : 'kobietą'}</GenderText>
+            {props.gender}
+            {props.selectedGender}
         </GenderImgWrapper>
     )
 }
 
+const mapStateToProps = state => {
+    return{
+        selectedGender: state.gender
+    }
+}
 
-export default GenderSelectionImg
+export default connect(mapStateToProps)(GenderSelectionImg)

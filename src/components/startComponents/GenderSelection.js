@@ -57,11 +57,11 @@ const GenderSelection = (props) => {
             <StartMainText >Jestem ...</StartMainText>
             <GenderSelector >
                 <GenderSelectionImg
-                    gender='girl'
+                    gender='female'
                     selectionMale={genderSelectionMale}
                     selectionFemale={genderSelectionFemale}/>
                 <GenderSelectionImg
-                    gender='boy'
+                    gender='male'
                     selectionMale={genderSelectionMale}
                     selectionFemale={genderSelectionFemale}/>
             </GenderSelector>
