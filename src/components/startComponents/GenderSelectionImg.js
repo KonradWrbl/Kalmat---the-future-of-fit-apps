@@ -27,7 +27,7 @@ const GenderText = styled.p`
 
 const MyButton = styled(Button)`
 border-radius: 50% !important;
-background-color: ${(props) => (props.gender !== props.selectedGender) ? '#B7BDBD' : '' } !important;
+background-color: ${(props) => props.isChecked ? '#B7BDBD' : '' } !important;
 `
 
 const GenderSelectionImg = props => {
@@ -61,12 +61,10 @@ const GenderSelectionImg = props => {
 
     return (
         <GenderImgWrapper>
-            <MyButton onClick={selectionFoo} >
+            <MyButton onClick={selectionFoo} isChecked={props.gender === props.selectedGender ? true : false}>
                 <GenderImg src={gender} />
             </MyButton>
             <GenderText>{props.gender==='male' ? 'mężczyzną' : 'kobietą'}</GenderText>
-            {props.gender}
-            {props.selectedGender}
         </GenderImgWrapper>
     )
 }
