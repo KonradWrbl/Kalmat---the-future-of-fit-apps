@@ -22,16 +22,17 @@ const CoreApp = (props) => {
         <CoreAppWrapper>
             {/* <ButtonAppBar /> */}
             <Menu />
-            <Home />
+            {props.bottomMenuValue === 0 ? <Home /> : ' '}
             <BottomMenu />
+
         </CoreAppWrapper>
     )
 }
 
-// const mapStateToProps = state => {
-//     return {
-//         state: state.bottomMenuValue
-//     }
-// }
+const mapStateToProps = state => {
+    return {
+        bottomMenuValue: state.bottomMenuValue
+    }
+}
 
-export default connect()(CoreApp)
+export default connect(mapStateToProps)(CoreApp)
