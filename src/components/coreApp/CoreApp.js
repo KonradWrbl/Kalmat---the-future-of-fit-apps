@@ -8,24 +8,30 @@ import Menu from './Menu'
 
 const CoreAppWrapper = styled.div`
     background-color: #F2F2F2;
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 `
 
-const CoreApp = () => {
+const CoreApp = (props) => {
     const [state, setState] = useState({
 
     })
     return(
         <CoreAppWrapper>
-            <ButtonAppBar />
+            {/* <ButtonAppBar /> */}
             <Menu />
             <Home />
             <BottomMenu />
         </CoreAppWrapper>
     )
 }
+
+// const mapStateToProps = state => {
+//     return {
+//         state: state.bottomMenuValue
+//     }
+// }
 
 export default connect()(CoreApp)

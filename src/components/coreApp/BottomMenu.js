@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 const BottomNavigationWrapper = styled.div`
   position: fixed;
   bottom: 0;
-  width: 100%
+  width: 100%;
 `
 
 const BottomMenu = props => {

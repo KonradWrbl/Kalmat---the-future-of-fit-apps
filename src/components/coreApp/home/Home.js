@@ -1,16 +1,22 @@
 import React from 'react';
-import styled from 'styled-components'
-import Chart from './Chart';
+import { HomeWrapper, HeaderImage, HeaderText, BcgImg, } from './style';
+import strong from '../../../images/strong.svg'
+import bcg from '../../../images/back.svg'
+import ProcentBar from './procentBar/ProcentBar';
 
-const HomeWrapper = styled.div`
-    background-color: #F2F2F2;
-    height: 100%;
-    width: 100%;
-`
+
+
+
 
 const Home = props => {
     return(
         <HomeWrapper>
+            <BcgImg src={bcg} alt="BcgImg"></BcgImg>
+            <HeaderImage src={strong} alt='header'></HeaderImage>
+            <HeaderText>Welcome back fit bro!</HeaderText>
+            <ProcentBar type='Calories'/>
+            <ProcentBar type='Activity'/>
+            <ProcentBar type='Hydration'/>
         </HomeWrapper>
     )
 }
