@@ -13,10 +13,11 @@
     "react-pose": "^4.0.8",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
+    "react-scripts": "^3.3.1",
     "recharts": "^1.6.2",
     "redux": "^4.0.4",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "victory": "^34.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

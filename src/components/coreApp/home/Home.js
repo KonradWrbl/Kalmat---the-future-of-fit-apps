@@ -3,6 +3,7 @@ import { HomeWrapper, HeaderImage, HeaderText, BcgImg, } from './style';
 import strong from '../../../images/strong.svg'
 import bcg from '../../../images/back.svg'
 import ProcentBar from './procentBar/ProcentBar';
+import WeightChart from './weightChart/WeightChart';
 
 
 
@@ -17,6 +18,10 @@ const Home = props => {
             <ProcentBar type='Calories'/>
             <ProcentBar type='Activity'/>
             <ProcentBar type='Hydration'/>
+            <WeightChart />
+            <WeightChart />
+            <WeightChart />
+
         </HomeWrapper>
     )
 }

@@ -8,6 +8,7 @@ import Fastfood from '@material-ui/icons/Fastfood';
 import FitnessCenter from '@material-ui/icons/FitnessCenter';
 import { connect } from 'react-redux'
 import styled from 'styled-components'
+import { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
@@ -50,6 +51,7 @@ const BottomMenu = props => {
         <BottomNavigationAction label="Dieta" icon={<Fastfood/>} />
         <BottomNavigationAction label="Ćwiczenia" icon={<FitnessCenter />} />
       </BottomNavigation>
+      {value === 1 ? <Redirect push to="/core/diet" /> : value === 2 ? <Redirect push to="/core/training" /> : <Redirect push to="/core" />}
     </BottomNavigationWrapper>
   );
 }
