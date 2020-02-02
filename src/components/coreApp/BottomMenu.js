@@ -9,6 +9,7 @@ import FitnessCenter from '@material-ui/icons/FitnessCenter';
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { Redirect } from 'react-router-dom';
+import { sendBottomMenu } from '../../redux/actions/actionCreators'
 
 const useStyles = makeStyles({
   root: {
@@ -34,7 +35,8 @@ const BottomMenu = props => {
   }
 
   useEffect(() => {
-    sendData();
+    props.sendBottomMenu(value)
+    //sendData();
   },[value])
 
   return (
@@ -58,8 +60,12 @@ const BottomMenu = props => {
 
 const mapStateToProps = value => {
   return{
-    bottomMenuValue: value
+    bottomMenuValue: value.profileData.bottomMenuValue
   }
 }
 
-export default connect(mapStateToProps)(BottomMenu)
+const mapDispatchToProps = {
+  sendBottomMenu,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BottomMenu)

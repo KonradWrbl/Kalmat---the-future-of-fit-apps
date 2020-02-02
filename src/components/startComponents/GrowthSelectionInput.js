@@ -6,6 +6,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import { connect } from 'react-redux'
+import { sendGrowth } from '../../redux/actions/actionCreators'
 
 
 const useStyles = makeStyles(theme => ({
@@ -32,19 +33,20 @@ const GrowthSelectionInput = (props) => {
         growth: props.growth,
     });
 
-    const sendData = () => {
-      props.dispatch({
-        type: 'GROWTH',
-        payload: values.growth
-      })
-    }
+    // const sendData = () => {
+    //   props.dispatch({
+    //     type: 'GROWTH',
+    //     payload: values.growth
+    //   })
+    // }
 
     const changegrowth = e => {
       setValues({growth: e.target.value})
     }
 
     useEffect(() => {
-      sendData();
+      //sendData();
+      props.sendGrowth(values.growth)
     }, [values]);
 
     return (
@@ -67,8 +69,12 @@ const GrowthSelectionInput = (props) => {
 
 const mapStateToProps = (values) => {
   return {
-    growth: values.growth,
+    growth: values.profileData.growth,
   }
 }
 
-export default connect(mapStateToProps)(GrowthSelectionInput)
+const mapDisptachToProps = {
+  sendGrowth,
+}
+
+export default connect(mapStateToProps, mapDisptachToProps)(GrowthSelectionInput)

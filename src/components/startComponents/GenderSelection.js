@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import GenderSelectionImg from './GenderSelectionImg'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
+import { sendGender } from '../../redux/actions/actionCreators'
+
 
 const GenderSelector = styled.div`
     display: flex;
@@ -29,12 +31,12 @@ const StartMainText = styled.p`
 const GenderSelection = (props) => {
     const [gender, setGender] = useState(`${props.gender}`)
 
-    const sendData = () => {
-        props.dispatch({
-            type: 'GENDER',
-            payload: gender,
-        })
-    }
+    // const sendData = () => {
+    //     props.dispatch({
+    //         type: 'GENDER',
+    //         payload: gender,
+    //     })
+    // }
 
     const genderSelectionMale = () => {
         console.log('male');
@@ -47,7 +49,8 @@ const GenderSelection = (props) => {
     }
 
     useEffect(() => {
-        sendData();
+        //sendData();
+        props.sendGender(gender)
       }, [gender]);
 
 
@@ -72,8 +75,12 @@ const GenderSelection = (props) => {
 
 const mapStateToProps = gender => {
     return {
-        gender: gender,
+        gender: gender.profileData.gender,
     }
 }
 
-export default connect(mapStateToProps)(GenderSelection)
+const mapDispatchToProps ={
+    sendGender,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GenderSelection)

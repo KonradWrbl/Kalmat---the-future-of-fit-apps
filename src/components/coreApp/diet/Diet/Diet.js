@@ -1,13 +1,23 @@
 import React from 'react';
 import { DietWrapper } from './style';
-import AddMealButton from '../addMeatButton/AddMealButton';
+import AddMealButton from '../addMealButton/AddMealButton';
+import { connect } from 'react-redux';
+import AddMeal from '../addMeal/AddMeal';
 
-const Diet = () => {
+
+const Diet = props => {
     return(
         <DietWrapper>
             <AddMealButton />
+            {props.isVisible ? (<AddMeal />) : ''}
         </DietWrapper>
     )
 }
 
-export default Diet
+const mapStateToProps = state => {
+    return({
+        isVisible: state.dietPage.addMealPopup,
+    })
+}
+
+export default connect(mapStateToProps)(Diet)
