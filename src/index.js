@@ -1,51 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { createStore } from 'redux';
+import { createStore, compose } from 'redux';
 import { Provider } from 'react-redux'
 import * as serviceWorker from './serviceWorker';
+import mainReducer from './redux/reducers/mainReducer';
 
-const initialState = {
-    gender: 'none',
-    age: '',
-    weight: '',
-    growth: '',
-    introductionFinished: false,
-    bottomMenuValue: 0
-  }
+//const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = compose( window.devToolExtension ? window.devToolsExtension() : f => f)(createStore)(mainReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
-  const reducer = (state = initialState, action) => {
-    switch(action.type)  {
-      case 'WEIGHT':
-        return {
-          ...state,
-          weight: action.payload}
-      case 'AGE':
-        return {
-          ...state,
-          age: action.payload}
-      case 'GROWTH':
-        return {
-          ...state,
-          growth: action.payload}
-      case 'GENDER':
-        return {
-          ...state,
-          gender: action.payload}
-      case 'FINISH':
-        return {
-          ...state,
-          introductionFinished: action.payload}
-      case 'BOTTOMMENU':
-        return {
-          ...state,
-          bottomMenuValue: action.payload}
-      default:
-        return state;
-    }
-  }
-
-  const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(<Provider store = {store}><App gugu='placek'/></Provider>, document.getElementById('root'));
 

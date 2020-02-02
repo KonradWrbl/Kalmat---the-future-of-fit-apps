@@ -55,9 +55,9 @@ function App(props) {
   );
 }
 
-const mapStateToProps = (props) => {
+const mapStateToProps = (state) => {
   return{
-      introductionFinished: props.introductionFinished
+      introductionFinished: state.profileData.introductionFinished
   }
 }
 

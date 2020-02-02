@@ -6,6 +6,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import { connect } from 'react-redux'
+import { sendAge } from '../../redux/actions/actionCreators'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -32,19 +33,20 @@ const AgeSelectionInput = (props) => {
         age: props.age,
     });
 
-    const sendData = () => {
-      props.dispatch({
-        type: 'AGE',
-        payload: values.age,
-      })
-    }
+    // const sendData = () => {
+    //   props.dispatch({
+    //     type: 'AGE',
+    //     payload: values.age,
+    //   })
+    // }
 
     const changeAge = e => {
       setValues({age: e.target.value})
     }
 
     useEffect(() => {
-      sendData();
+      //sendData();
+      props.sendAge(values.age)
     }, [values]);
 
     return (
@@ -67,8 +69,12 @@ const AgeSelectionInput = (props) => {
 
 const mapStateToProps = (values) => {
   return {
-    age: values.age,
+    age: values.profileData.age,
   }
 }
 
-export default connect(mapStateToProps)(AgeSelectionInput)
+const mapDispatchToProps = {
+  sendAge,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AgeSelectionInput)

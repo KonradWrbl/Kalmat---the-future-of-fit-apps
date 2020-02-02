@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Stepper from './Stepper'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
+import { sendFinish } from '../../redux/actions/actionCreators'
 
 const StartComponentWrapper = styled.div`
         background-color: #F2F2F2;
@@ -17,19 +18,20 @@ const StartComponent = (props) => {
 
     const [introductionFinished, setfinished] = React.useState({finished: props.introductionFinished})
 
-    const sendData = () => {
-        props.dispatch({
-            type: 'FINISH',
-            payload: introductionFinished,
-        })
-    }
+    // const sendData = () => {
+    //     props.dispatch({
+    //         type: 'FINISH',
+    //         payload: introductionFinished,
+    //     })
+    // }
 
     const finish = () => {
         setfinished(true)
     }
 
     useEffect(() => {
-        sendData();
+        //sendData();
+        props.sendFinish(introductionFinished)
       }, [introductionFinished]);
 
     return (
@@ -40,4 +42,12 @@ const StartComponent = (props) => {
     )
 }
 
-export default connect()(StartComponent)
+const mapStateToProps = state => (
+    {introductionFinished: state.profileData.introductionFinished}
+)
+
+const mapDispatchToProps = {
+    sendFinish,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(StartComponent)
