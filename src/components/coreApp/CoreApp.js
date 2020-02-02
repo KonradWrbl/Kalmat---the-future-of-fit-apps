@@ -6,6 +6,7 @@ import ButtonAppBar from './AppBar';
 import Home from './home/Home';
 import Menu from './Menu'
 import { Redirect, Route } from 'react-router-dom';
+import Diet from './diet/Diet/Diet';
 
 const CoreAppWrapper = styled.div`
     background-color: #F2F2F2;
@@ -21,15 +22,11 @@ const CoreApp = (props) => {
 
     })
 
-    if (props.bottomMenuValue == 0) {
-        //return <Redirect push to="/core" />;
-      }
-
     return(
         <CoreAppWrapper>
             <Route exact path='/core' component={Home} />
             <Route path='/core/training' component={Home} />
-            <Route path='/core/diet' component={Home} />
+            <Route path='/core/diet' component={Diet} />
             {/* <ButtonAppBar /> */}
             <Menu />
             {/* {props.bottomMenuValue === 0 ? <Home /> : ' '} */}

@@ -26,8 +26,8 @@ const GenderText = styled.p`
 `
 
 const MyButton = styled(Button)`
-border-radius: 50% !important;
-background-color: ${(props) => props.isChecked ? '#B7BDBD' : '' } !important;
+    border-radius: 50% !important;
+    background-color: ${(props) => props.isChecked ? '#B7BDBD' : '' } !important;
 `
 
 const GenderSelectionImg = props => {
