@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { AddMealWrapper, AddMealPopup, BG, FormWrapper, StyledLabel, StyledInput, SubmitButton, SubmitButtonWrapper } from './style';
-import { addMealPopup } from '../../../../redux/actions/actionCreators'
+import { addMeal } from '../../../../redux/actions/actionCreators'
 import { connect } from 'react-redux';
 import Axios from 'axios';
 
 const AddMeal = (props) => {
     const [newMeal, setNewMeal] = useState('')
     const [weight, setWeight] = useState(0)
-    const [mealData, setMealData] = useState({})
+    const [mealData, setMealData] = useState([])
+    const [mealTab, setMealTab] = useState(props.mealTab)
 
     const API = `https://api.edamam.com/api/food-database/`
 
@@ -17,22 +18,26 @@ const AddMeal = (props) => {
             .then(response => {
                 const data = response.data.hints[0].food
                 console.log(response.data.hints[0].food)
-                setMealData({
+                setMealData([...props.mealTab, {
                     label: newMeal,
                     id: data.foodId,
                     kcal: data.nutrients.ENERC_KCAL,
                     fat: data.nutrients.FAT,
-                })
-
+                }])
+                props.hidePopup()
             })
             .catch(error => console.log(error))
             .finally(response => {
-                props.hidePopup();
+                //props.hidePopup();
             })
         } else {
             console.log('Brak danych');
         }
     }
+
+    useEffect(() => {
+        if (mealData.length>0) props.addMeal(mealData)
+    })
 
     return(
         <>
@@ -64,4 +69,14 @@ const AddMeal = (props) => {
     )
 }
 
-export default AddMeal
+const mapStateToProps = state => {
+    return({
+        mealTab: state.dietPage.newMeal
+    })
+}
+
+const mapDispatchToProps = {
+    addMeal,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddMeal)

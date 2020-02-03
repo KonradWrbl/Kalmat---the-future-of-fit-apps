@@ -1,4 +1,4 @@
-import { AGE, WEIGHT, GROWTH, GENDER, FINISH, BOTTOMMENU, ADDMEAL } from "./actionsTypes"
+import { AGE, WEIGHT, GROWTH, GENDER, FINISH, BOTTOMMENU, ADDMEAL, NEWMEAL } from "./actionsTypes"
 
 //profileData creators
 export const sendAge = payload => {
@@ -47,6 +47,13 @@ export const sendBottomMenu = payload => {
 export const addMealPopup = payload => {
   return({
     type: ADDMEAL,
+    payload,
+  })
+}
+
+export const addMeal = payload => {
+  return({
+    type: NEWMEAL,
     payload,
   })
 }

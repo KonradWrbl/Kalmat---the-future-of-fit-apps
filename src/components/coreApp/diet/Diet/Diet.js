@@ -22,10 +22,15 @@ const Diet = props => {
         props.addMealPopup(isAddMealPopupVisible)
     },[isAddMealPopupVisible])
 
+    const listOfMeals = props.mealsList.map(x => (
+        <div>{[x.label,' ', x.kcal]}kcal</div>
+    ))
+
     return(
         <DietWrapper>
             <AddMealButton showPopup={showAddMealPopup}/>
             {props.isVisible ? (<AddMeal hidePopup={hideAddMealPopup}/>) : ''}
+            {listOfMeals}
         </DietWrapper>
     )
 }
@@ -33,6 +38,7 @@ const Diet = props => {
 const mapStateToProps = state => {
     return({
         isVisible: state.dietPage.addMealPopup,
+        mealsList: state.dietPage.newMeal,
     })
 }
 

@@ -1,5 +1,6 @@
 const initialState = {
     addMealPopup: false,
+    newMeal: [],
 }
 
 const dietPageReducer = (state = initialState, action) => {
@@ -8,6 +9,11 @@ const dietPageReducer = (state = initialState, action) => {
             return {
                 ...state,
                 addMealPopup: action.payload,
+            }
+        case 'NEWMEAL' :
+            return {
+                ...state,
+                newMeal: action.payload
             }
         default :
             return state

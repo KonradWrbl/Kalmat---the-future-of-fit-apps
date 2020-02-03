@@ -1,5 +1,3 @@
-
-
 //profileData types
 export const WEIGHT = 'WEIGHT'
 export const AGE = 'AGE'
@@ -8,5 +6,6 @@ export const GENDER = 'GENDER'
 export const FINISH = 'FINISH'
 export const BOTTOMMENU = 'BOTTOMMENU'
 
-//dietaPage types
+//dietPage types
 export const ADDMEAL = 'ADDMEAL'
+export const NEWMEAL = 'NEWMEAL'
