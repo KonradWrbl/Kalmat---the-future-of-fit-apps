@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AddMealWrapper, AddMealPopup } from './style';
+import { AddMealWrapper, AddMealPopup, BG, FormWrapper, StyledLabel, StyledInput, SubmitButton, SubmitButtonWrapper } from './style';
 import { addMealPopup } from '../../../../redux/actions/actionCreators'
 import { connect } from 'react-redux';
 
@@ -8,32 +8,29 @@ const AddMeal = (props) => {
     const APPID = '721812f4'
     const URL = `https://api.edamam.com/api/food-database/parser?ingr=pizza&app_id=${APPID}&app_key=${KEY}`
 
-    const [isVisible, setVisible] = useState(props.isVisible)
-
-    const closePopup = () => {
-        setVisible(false)
-        console.log('fdgs');
-    }
-
-    useEffect(() => {
-        props.addMealPopup(isVisible)
-    },[isVisible])
 
     return(
-        <AddMealWrapper onClick={closePopup}>
-            <AddMealPopup>
-
-            </AddMealPopup>
-        </AddMealWrapper>
+        <>
+            <AddMealWrapper >
+                <AddMealPopup>
+                    <FormWrapper>
+                        <StyledLabel>
+                            Dish name:
+                            <StyledInput type='text'></StyledInput>
+                        </StyledLabel>
+                        <StyledLabel>
+                            Estimated weight (g):
+                            <StyledInput type='number'></StyledInput>
+                        </StyledLabel>
+                        <SubmitButtonWrapper>
+                            <SubmitButton>Add</SubmitButton>
+                        </SubmitButtonWrapper>
+                    </FormWrapper>
+                </AddMealPopup>
+                <BG onClick={props.hidePopup} />
+            </AddMealWrapper>
+        </>
     )
 }
 
-const mapStateToProps = state => ({
-    isVisible: state.dietPage.addMealPopup
-})
-
-const mapDispatchToProps = {
-    addMealPopup,
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddMeal)
+export default AddMeal

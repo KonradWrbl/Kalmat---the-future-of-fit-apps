@@ -35,6 +35,7 @@ const GlobalStyle = createGlobalStyle`
 const MainWrapper = styled.div`
   width: 100vmin;
   height: 100vh;
+  font-family: 'Montserrat', sans-serif;
 `
 
 
