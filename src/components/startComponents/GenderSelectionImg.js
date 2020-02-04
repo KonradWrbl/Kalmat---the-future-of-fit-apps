@@ -71,7 +71,7 @@ const GenderSelectionImg = props => {
 
 const mapStateToProps = state => {
     return{
-        selectedGender: state.gender
+        selectedGender: state.profileData.gender
     }
 }
 
