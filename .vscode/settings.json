@@ -1,4 +1,5 @@
 {
-    "editor.fontFamily": "Fira Code",
-    "editor.fontLigatures": true
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontLigatures": true,
+    "editor.fontWeight": "500"
 }

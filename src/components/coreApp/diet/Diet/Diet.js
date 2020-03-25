@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { DietWrapper } from './style';
 import AddMealButton from '../addMealButton/AddMealButton';
 import { connect } from 'react-redux';
 import AddMeal from '../addMeal/AddMeal';
 import { addMealPopup } from '../../../../redux/actions/actionCreators'
-
+import gsap from 'gsap'
 
 const Diet = props => {
 
@@ -26,12 +26,27 @@ const Diet = props => {
         <div>{[x.label,' ', x.kcal]}kcal</div>
     ))
 
+    const wrapper = useRef(null);
+
+    useEffect(() => {
+        const elements = wrapper.current.children;
+
+        gsap.set([...elements], {autoAlpha: 0});
+
+        const tl = gsap.timeline({defaults: {ease: 'power3.inOut'}})
+
+        tl.to(elements, {duration: 1, autoAlpha: 1, stagger: 0.1})
+
+    }, [])
+
     return(
-        <DietWrapper>
-            <AddMealButton showPopup={showAddMealPopup}/>
-            {props.isVisible ? (<AddMeal hidePopup={hideAddMealPopup}/>) : ''}
-            {listOfMeals}
-        </DietWrapper>
+
+            <DietWrapper ref={ wrapper }>
+                <AddMealButton showPopup={showAddMealPopup}/>
+                {props.isVisible ? (<AddMeal hidePopup={hideAddMealPopup}/>) : ''}
+                {listOfMeals}
+            </DietWrapper>
+
     )
 }
 
