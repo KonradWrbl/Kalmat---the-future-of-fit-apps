@@ -73,9 +73,9 @@ const GenderSelection = (props) => {
     )
 }
 
-const mapStateToProps = gender => {
+const mapStateToProps = state => {
     return {
-        gender: gender.profileData.gender,
+        gender: state.profileData.gender,
     }
 }
 

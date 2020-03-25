@@ -1,0 +1,43 @@
+if [ -z $(command -v git) ]
+  then
+    echo "Nope. Install 'git' first ('https://git-scm.com/book/en/v2/Getting-Started-Installing-Git')"
+    exit 1
+fi
+
+if [ -z $(command -v hub) ]
+  then
+    echo "Nope. Install 'hub' first ('https://github.com/github/hub')"
+    exit 1
+fi
+
+if [ $# -eq 0 ]
+  then
+    echo "You have to pass an issue title as a parameter"
+    exit 1
+fi
+
+echo "Creating issue with name: '$1'"
+
+output="$1"
+issueNumber=$(hub issue create -m "$1" | rev | cut -d "/" -f1 | rev)
+
+# Convert all chars to lowercase
+output="$(echo "$output" | awk '{print tolower($0)}')"
+
+# Remove all single quotes
+output=$(echo "$output" | sed -r "s/'//g")
+
+# Convert all non-alpha-numeric to dashes (-)
+output=$(echo "$output" | sed -r "s/[^a-zA-Z0-9-]+/-/g")
+
+# Replace multple dash occurances with singles
+output="$(echo "$output" | sed -r 's/-+/-/g')"
+
+# Remove trailing dashes
+output="$(echo "$output" | sed -r 's/^-+|-+$//g')"
+
+branchName="$output-i$issueNumber"
+
+echo "Switching to branch '$branchName'"
+
+git checkout -b $branchName
